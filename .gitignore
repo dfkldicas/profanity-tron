@@ -1,0 +1,7 @@
+# Makefile artifacts
+*.o
+*.so
+cache-opencl.*
+bin
+.DS_store
+README_dev.md
