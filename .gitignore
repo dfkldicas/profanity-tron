@@ -1,7 +1,8 @@
 # Makefile artifacts
 *.o
 *.so
+.DS_store
 cache-opencl.*
 bin
-.DS_store
+profanity.x64
 README_dev.md

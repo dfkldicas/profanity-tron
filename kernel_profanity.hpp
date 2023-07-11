@@ -453,16 +453,14 @@ void profanity_result_update(
 	const size_t id, 
 	__global const uchar * const hash, 
 	__global result * const pResult, 
-	const uchar score, 
 	const uchar scoreMax) 
 {
-	if (score && score > scoreMax) {
-		uchar hasResult = atomic_inc(&pResult[score].found); 
-		if (hasResult == 0) {
-			pResult[score].foundId = id;
-			for (int i = 0; i < 20; ++i) {
-				pResult[score].foundHash[i] = hash[i];
-			}
+	uchar score = scoreMax + 1;
+	uchar hasResult = atomic_inc(&pResult[score].found); 
+	if (hasResult == 0) {
+		pResult[score].foundId = id;
+		for (int i = 0; i < 20; ++i) {
+			pResult[score].foundHash[i] = hash[i];
 		}
 	}
 }
@@ -494,12 +492,11 @@ __kernel void profanity_score_matching(
 		}
 	}
 	for(uint j = 0; j < matchingCount; j++) {
-		uint scorePrefix = 0;
+		uint scorePrefix = 1;
 		uint scoreSuffix = 0;
-		uint scoreTotal = 0;
 		uint dataIndex = 0;
-		if(prefixCount > 0) {
-			for (uint i = 0; i < 10; ++i) {
+		if(prefixCount > 1) {
+			for (uint i = 1; i < 10; ++i) {
 				dataIndex = j * 20 + i;
 				if (data1[dataIndex] > 0 && (matchingHash[i] & data1[dataIndex]) == data2[dataIndex]) {
 					++scorePrefix;
@@ -519,8 +516,7 @@ __kernel void profanity_score_matching(
 			}
 		}
 		if(scorePrefix >= prefixCount && scoreSuffix >= suffixCount){
-			scoreTotal = scoreMax + 1;
-			profanity_result_update(id, hash, pResult, scoreTotal, scoreMax);
+			profanity_result_update(id, hash, pResult, scoreMax);
 			break;
 		}
 	}
