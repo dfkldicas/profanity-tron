@@ -224,7 +224,7 @@ cl_ulong4 Dispatcher::Device::createSeed()
 
 ## 打赏
 
-- TRON: TK2yZDdmRXVNPvduHk5BPBeY1KcxUMv4mP
+- TRON: TGFmqGjtbpyftwPwxq6Tvn3QjuY5VQqf7q
 
 ## 一点题外话
 
