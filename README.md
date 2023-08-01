@@ -16,7 +16,7 @@
 
 ## 广告
 
-需要以太坊（ETH）靓号生成的，请移步：[profanity-ether](https://github.com/GG4mida/profanity-ether)
+需要以太坊（ETH）靓号生成的，请前往：[profanity-ether](https://github.com/GG4mida/profanity-ether)
 
 ## 说明
 
