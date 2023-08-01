@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/platform-windows,linux-yellow.svg)
 ![](https://img.shields.io/badge/telegram-@jackslowfak-blue.svg)
 
-波场（TRON）靓号生成器，利用 `gpu` 进行加速。代码开源，安全可靠 🔥
+波场（TRX）靓号生成器，利用 `gpu` 进行加速。代码开源，安全可靠 🔥
 
 <img width="100%" src="https://github.com/GG4mida/profanity-tron/blob/main/screenshot/demo.png?raw=true"/>
 
