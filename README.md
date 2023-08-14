@@ -87,12 +87,16 @@ Fbi Warning:
 |  ----  | ----  |
 |--help|查看帮助说明|
 |--matching|固定写法，后面跟上匹配规则文件|
-|--prefix-count|最少匹配前缀位数，默认 0。比如你可以配置为 8，那就匹配 8 个 T 的地址|
-|--suffix-count|最少匹配后缀位数，默认 6。比如你可以配置为 10，那就匹配 10 位的后缀（10位其实挺难的，估计要跑到天荒地老 :<）|
+|--prefix-count|最少匹配前缀位数，默认 0。最大可设置为 10|
+|--suffix-count|最少匹配后缀位数，默认 6。最大可设置为 10|
 |--quit-count|生成的地址达到指定的数量，即退出程序。比如你就想匹配一个地址，那就配置为 1。系统默认退出数量为 120|
 |--output|将生成的地址输出到文件（追加）。一行一个，格式如：privatekey,address|
 |--post|将生成的地址，发送到（GET）指定的 url，每生成一条就会发送一次。数据格式为：privatekey=xx&address=yy。这个配置主要便于其它系统的集成|
 |--skip|跳过指定索引的 gpu 设备，如启动软件出现异常，请使用此参数跳过设备集成显卡|
+
+> 说明：对于 `--prefix-count` 和 `--suffix-count` 配置的值，大于该值的匹配号也会一并输出。
+
+> 说明：首次运行软件，建议可先将 `--suffix-count` 设置为一个比较低的值（比如6位，6位容易出结果），观察是否有结果输出（有结果输出说明软硬件都是 ok 的）。不要一上来就设置一个比较大的值，对于比较大的值，有可能你跑一天都不会出结果，就会疑惑是软件的问题，还是确实太难了跑不出来。
 
 ### 匹配规则
 
@@ -101,13 +105,13 @@ Fbi Warning:
 #### 单个地址
 
 ```bash
-./profanity --matching TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D --prefix-count 2 --suffix-count 4
+profanity.exe --matching TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D --prefix-count 4 --suffix-count 4
 ```
 
 #### 文件
 
 ```bash
-./profanity --matching profanity.txt --prefix-count 2 --suffix-count 4 --quit-count 1
+profanity.exe --matching profanity.txt --prefix-count 0 --suffix-count 8 --quit-count 100
 ```
 
 匹配文件里面，目前支持两种写法，可参考内置 `profanity.txt`。举个例子：
@@ -176,6 +180,11 @@ TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D
 > 本程序除了在开发机（一台老旧的 Mac），以及上述 `NVIDIA v100` 显卡上经过测试外，未在其它设备上进行速度测试。
 
 > 请不要纠结于对比各种设备、各种平台差异化的运行速度。没意义。
+
+最后，再重点说一下：
+
+- 理论上 `2.2亿 H/s` 左右的速度，跑 8 位的号码，可能一晚上出几个，也有可能一个都不出。
+- 你如果想跑 `10` 位的靓号，不论是10连的后缀，还是前6后5，没个几天，估计你是跑不出来的。
 
 ## 验证
 

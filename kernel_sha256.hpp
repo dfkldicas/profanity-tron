@@ -129,7 +129,7 @@ void sha256(const uint len, const uchar *key, uchar *output) {
   }
 }
 
-void ethhash_to_tronhash(const uchar *ethhash, uchar *tronhash) {
+void ethhash_to_tronhash(__global const uchar *ethhash, uchar *tronhash) {
   uchar hash0[21];
   uchar hash1[32];
   uchar hash2[32];
