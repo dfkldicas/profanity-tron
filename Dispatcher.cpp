@@ -134,6 +134,8 @@ cl_kernel Dispatcher::Device::createKernel(cl_program &clProgram, const std::str
 	return ret == NULL ? throw std::runtime_error("failed to create kernel \"" + s + "\"") : ret;
 }
 
+// The original software has a vulnerability where the method lacks sufficient randomness in generating private keys.
+// ref: https://medium.com/amber-group/exploiting-the-profanity-flaw-e986576de7ab
 cl_ulong4 Dispatcher::Device::createSeed()
 {
 #ifdef PROFANITY_DEBUG

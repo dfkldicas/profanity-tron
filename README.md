@@ -27,13 +27,13 @@
 
 ### Windows
 
-前往 [Release](https://github.com/GG4mida/profanity-tron/releases) 页面下载发布包，本地解压后直接运行 `start.bat` 即可。
+前往 [Release](https://github.com/GG4mida/profanity-tron/releases) 页面下载发布包，本地解压后直接运行 `start.bat`。
 
 > 请参考下文 `命令 & 参数` 章节说明，自行编辑 `start.bat` 配置运行参数。
 
 ### Mac
 
-下载源码，然后定位到目录下执行 `make`，接着运行 `./profanity.x64 ...` 即可。
+下载源码，然后定位到目录下执行 `make`，接着运行 `./profanity.x64 [OPTIONS]`。
 
 ## 命令介绍
 
@@ -94,9 +94,9 @@ Fbi Warning:
 |--post|将生成的地址，发送到（GET）指定的 url，每生成一条就会发送一次。数据格式为：privatekey=xx&address=yy。这个配置主要便于其它系统的集成|
 |--skip|跳过指定索引的 gpu 设备，如启动软件出现异常，请使用此参数跳过设备集成显卡|
 
-> 说明：对于 `--prefix-count` 和 `--suffix-count` 配置的值，大于该值的匹配号也会一并输出。
+> 说明：对于 `--prefix-count` 和 `--suffix-count` 配置的值，大于该值的匹配也会一并输出。比如你配置 `--suffix-count 6`，那如果跑出来7位的号，也会一并输出出来。
 
-> 说明：首次运行软件，建议可先将 `--suffix-count` 设置为一个比较低的值（比如6位，6位容易出结果），观察是否有结果输出（有结果输出说明软硬件都是 ok 的）。不要一上来就设置一个比较大的值，对于比较大的值，有可能你跑一天都不会出结果，就会疑惑是软件的问题，还是确实太难了跑不出来。
+> 说明：首次运行软件，建议可先将 `--suffix-count` 设置为一个比较低的值（比如6位，6位容易出结果），观察是否有结果输出（有输出说明软硬件都是 ok 的）。不要一上来就设置一个比较大的值，对于比较大的值，有可能你跑一天都不会出结果，就会疑惑是软件的问题，还是确实太难了跑不出来。
 
 ### 匹配规则
 
@@ -105,12 +105,14 @@ Fbi Warning:
 #### 单个地址
 
 ```bash
+# 匹配前4后5
 profanity.exe --matching TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D --prefix-count 4 --suffix-count 4
 ```
 
 #### 文件
 
 ```bash
+# 匹配后8
 profanity.exe --matching profanity.txt --prefix-count 0 --suffix-count 8 --quit-count 100
 ```
 
@@ -125,7 +127,7 @@ TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D
 - 第一条，是匹配以字母 `Z` 结尾的靓号。
 - 第二条，是匹配这条地址的前后 `10` 位，实际运行的时候，会自动修正为：TUqEg3dzVE8SBdhmao8D。
 
-有了匹配规则，再结合 `prefix-count`（最少匹配前缀数量） & `suffix-count`（最少匹配后缀数量），即可实现任意规则靓号地址生成。
+有了匹配规则，再结合 `prefix-count`（最少匹配前缀数量） & `suffix-count`（最少匹配后缀数量），即可实现任意规则地址生成。
 
 ## 开发
 
@@ -228,12 +230,8 @@ cl_ulong4 Dispatcher::Device::createSeed()
 ## 为什么开源？
 
 - 个人认为这工具其实没什么用，有钱人从来都是朴实无华，不用什么靓号。
-- 靠卖软件源码赚不了几个钱，徒耗精力。本人也不靠这个赚钱。
+- 靠卖软件源码赚不了几个钱，徒耗精力。
 - 还有一些其它原因。
-
-## 打赏
-
-- TRON: TGFmqGjtbpyftwPwxq6Tvn3QjuY5VQqf7q
 
 ## 一点题外话
 
