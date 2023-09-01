@@ -30,8 +30,8 @@ Examples:
   ./profanity --matching profanity.txt --skip 1
   ./profanity --matching profanity.txt --suffix-count 6
   ./profanity --matching profanity.txt --prefix-count 2 --suffix-count 6 --quit-count 1
-  ./profanity --matching profanity.txt --output result.txt
-  ./profanity --matching profanity.txt --post http://127.0.0.1:7002/api
+  ./profanity --matching profanity.txt --suffix-count 6 --output result.txt
+  ./profanity --matching profanity.txt --suffix-count 6 --post http://127.0.0.1:7002/api
   ./profanity --matching TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D --prefix-count 2 --suffix-count 4 --quit-count 1
 
 About:

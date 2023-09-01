@@ -253,7 +253,7 @@ void Dispatcher::run()
 
 	std::cout << std::endl;
 	std::cout << "Running..." << std::endl;
-	std::cout << "  Before using a generated vanigity address, pls always verify that it matches the printed private key." << std::endl;
+	std::cout << "  Before using a generated address, pls always verify that it matches the printed private key." << std::endl;
 	std::cout << "  Please make sure the program you are running is download from: https://github.com/GG4mida/profanity-tron" << std::endl;
 	std::cout << "  And always multi-sign the address to ensure account security. " << std::endl;
 	std::cout << std::endl;

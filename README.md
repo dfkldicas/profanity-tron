@@ -6,9 +6,9 @@
 ![](https://img.shields.io/badge/platform-windows,linux-yellow.svg)
 ![](https://img.shields.io/badge/telegram-@jackslowfak-blue.svg)
 
-波场（TRX）靓号生成器，利用 `gpu` 进行加速。代码开源，安全可靠 🔥
+波场（TRX）地址生成器，利用 `gpu` 进行加速。代码开源，安全可靠 🔥
 
-<img width="100%" src="https://github.com/GG4mida/profanity-tron/blob/main/screenshot/demo.png?raw=true"/>
+<img width="100%" src="screenshot/demo.png?raw=true"/>
 
 > Fbi Warning 1: 该程序仅用于学习交流，请勿用于非法用途。
 
@@ -16,11 +16,11 @@
 
 ## 广告
 
-需要以太坊（ETH）靓号生成的，请前往：[profanity-ether](https://github.com/GG4mida/profanity-ether)
+需要以太坊（ETH）地址生成的，请前往：[profanity-ether](https://github.com/GG4mida/profanity-ether)
 
 ## 说明
 
-- 本程序基于以太坊地址生成器：[profanity](https://github.com/johguse/profanity) 修改而来，同时修复了原程序私钥可爆破的问题。可参考下方 `安全` 章节说明。
+- 本程序基于以太坊地址生成器：[profanity](https://github.com/johguse/profanity) 修改而来，同时修复了原程序私钥可爆破的问题。请参考下方 `安全` 章节说明。
 - 即使本程序已修复原程序已公开漏洞，但仍然建议你对生成的地址进行 `多签` 后再使用。多签后的地址，可保证 `100%` 安全，关于如何多签，请自行谷歌。 
 
 ## 运行
@@ -30,6 +30,8 @@
 前往 [Release](https://github.com/GG4mida/profanity-tron/releases) 页面下载发布包，本地解压后直接运行 `start.bat`。
 
 > 请参考下文 `命令 & 参数` 章节说明，自行编辑 `start.bat` 配置运行参数。
+
+> 运行的设备如果有集成显卡，请添加 `--skip 1` 把集成显卡过滤之，否则可能会跑不起来。
 
 ### Mac
 
@@ -124,7 +126,7 @@ TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D
 ```
 
 上面这两条匹配规则：
-- 第一条，是匹配以字母 `Z` 结尾的靓号。
+- 第一条，是匹配以字母 `Z` 结尾的地址。
 - 第二条，是匹配这条地址的前后 `10` 位，实际运行的时候，会自动修正为：TUqEg3dzVE8SBdhmao8D。
 
 有了匹配规则，再结合 `prefix-count`（最少匹配前缀数量） & `suffix-count`（最少匹配后缀数量），即可实现任意规则地址生成。
@@ -145,11 +147,11 @@ TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D
 
 2. 根据服务器配置搜索驱动，然后下载：
 
-<img width="100%" src="https://github.com/GG4mida/profanity-tron/blob/main/screenshot/nvidia.png?raw=true"/>
+<img width="100%" src="screenshot/nvidia.png?raw=true"/>
 
 3. 显卡驱动安装完毕后，打开设备管理器，可以查看到显卡信息（如果不安装驱动，是看不到这个的）：
 
-<img width="100%" src="https://github.com/GG4mida/profanity-tron/blob/main/screenshot/gpu.png?raw=true"/>
+<img width="100%" src="screenshot/gpu.png?raw=true"/>
 
 ### 安装 `visual studio`
 
@@ -157,11 +159,11 @@ TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D
 
 2. 选择以下版本进行下载：
 
-<img width="100%" src="https://github.com/GG4mida/profanity-tron/blob/main/screenshot/vs.png?raw=true"/>
+<img width="100%" src="screenshot/vs.png?raw=true"/>
 
 3. 下载后，打开安装程序，安装以下截图所示的组件：
 
-<img width="100%" src="https://github.com/GG4mida/profanity-tron/blob/main/screenshot/vs1.png?raw=true"/>
+<img width="100%" src="screenshot/vs1.png?raw=true"/>
 
 4. 以上软件安装完成后，就可以进行开发了。
 
@@ -177,7 +179,7 @@ TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D
 
 本程序使用阿里云配置：`GPU 计算型 8 vCPU 32 GiB x 1 * NVIDIA V100`。运行速度在 `2.2亿 H/s` 左右：
 
-<img width="100%" src="https://github.com/GG4mida/profanity-tron/blob/main/screenshot/demo.png?raw=true"/>
+<img width="100%" src="screenshot/demo.png?raw=true"/>
 
 > 本程序除了在开发机（一台老旧的 Mac），以及上述 `NVIDIA v100` 显卡上经过测试外，未在其它设备上进行速度测试。
 
@@ -186,7 +188,7 @@ TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D
 最后，再重点说一下：
 
 - 理论上 `2.2亿 H/s` 左右的速度，跑 8 位的号码，可能一晚上出几个，也有可能一个都不出。
-- 你如果想跑 `10` 位的靓号，不论是10连的后缀，还是前6后5，没个几天，估计你是跑不出来的。
+- 你如果想跑 `10` 位的地址，不论是10连的后缀，还是前6后5，没个几天，估计你是跑不出来的。
 
 ## 验证
 
@@ -227,15 +229,9 @@ cl_ulong4 Dispatcher::Device::createSeed()
 }
 ```
 
-## 为什么开源？
-
-- 个人认为这工具其实没什么用，有钱人从来都是朴实无华，不用什么靓号。
-- 靠卖软件源码赚不了几个钱，徒耗精力。
-- 还有一些其它原因。
-
 ## 一点题外话
 
-现有市面上流传的 `gpu` 类靓号生成程序，基本上都是基于 `profanity` 修改而来。从技术角度来讲，如果出于作恶的目的，完全可以对原版程序的漏洞 `变本加厉`，做到 `秒秒钟` 的私钥爆破。尤其是在不提供源码，仅有一个 `exe 可执行程序` 的情况下，会让作恶的逻辑更加的黑盒。因此再次建议请勿运行任何 `非透明` 的可执行程序，在币圈这种社会达尔文主义盛行的行业，由此导致的资产损失可以说每天都在上演。言尽于此，祝大家好运 🤝
+现有市面上流传的 `gpu` 类地址生成程序，基本上都是基于 `profanity` 修改而来。从技术角度来讲，如果出于作恶的目的，完全可以对原版程序的漏洞 `变本加厉`，做到 `秒秒钟` 的私钥爆破。尤其是在不提供源码，仅有一个 `exe 可执行程序` 的情况下，会让作恶的逻辑更加的黑盒。因此再次建议请勿运行任何 `非透明` 的可执行程序，在币圈这种社会达尔文主义盛行的行业，由此导致的资产损失可以说每天都在上演。言尽于此，祝大家好运 🤝
 
 ## 联系
 
