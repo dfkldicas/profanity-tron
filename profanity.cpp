@@ -168,7 +168,8 @@ int main(int argc, char **argv)
 
 		std::string matchingInput;
 		std::string outputFile;
-		// localhost test post url
+		// localhost test post url, 
+		// rember change it to your own business api url.
 		std::string postUrl = "http://127.0.0.1:7002/api/address";
 		std::vector<size_t> vDeviceSkipIndex;
 		size_t worksizeLocal = 64;

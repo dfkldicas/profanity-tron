@@ -18,7 +18,7 @@ Usage: ./profanity [OPTIONS]
     --quit-count        Exit the program when the generated number is greater than, default 0
 
   Device control:
-    --skip              Skip device given by index
+    --skip              Skip GPU device given by index
 
   Output control:
     --output            The file to output the results to

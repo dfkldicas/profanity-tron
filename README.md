@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/platform-windows,linux-yellow.svg)
 ![](https://img.shields.io/badge/telegram-@jackslowfak-blue.svg)
 
-波场（TRX）地址生成器，利用 `gpu` 进行加速。代码开源，安全可靠 🔥
+波场（TRX）地址生成器，利用 `GPU` 进行加速。代码开源，安全可靠 🔥
 
 <img width="100%" src="screenshot/demo.png?raw=true"/>
 
@@ -27,15 +27,27 @@
 
 ### Windows
 
-前往 [Release](https://github.com/GG4mida/profanity-tron/releases) 页面下载发布包，本地解压后直接运行 `start.bat`。
+前往 [Release](https://github.com/GG4mida/profanity-tron/releases) 页面下载发布包（window.zip），本地解压后直接运行 `start.bat`。
 
 > 请参考下文 `命令 & 参数` 章节说明，自行编辑 `start.bat` 配置运行参数。
 
-> 运行的设备如果有集成显卡，请添加 `--skip 1` 把集成显卡过滤之，否则可能会跑不起来。
+> 运行的设备如果有集成显卡，请添加 `--skip 1` 把集成显卡过滤之，否则可能会导致：1. 跑不起来，2. 生成的地址和私钥不匹配。
+
+> 如果提示 `vcruntime140_1.dll` 相关异常，请安装 `visual studio` 应用程序，官方下载链接：[https://visualstudio.microsoft.com/zh-hans/vs/](https://visualstudio.microsoft.com/zh-hans/vs/)
 
 ### Mac
 
 下载源码，然后定位到目录下执行 `make`，接着运行 `./profanity.x64 [OPTIONS]`。
+
+### Linux
+
+先安装 `cuda` 驱动，再安装 `g++`，再下载源码，最后解压后进入目录运行：
+
+```bash
+g++ Dispatcher.cpp Mode.cpp precomp.cpp profanity.cpp SpeedSample.cpp -I./Curl/include -I./OpenCL/include -o profanity.x64
+```
+
+> 关于 `g++` 的使用，请自行谷歌。
 
 ## 命令介绍
 
@@ -94,7 +106,7 @@ Fbi Warning:
 |--quit-count|生成的地址达到指定的数量，即退出程序。比如你就想匹配一个地址，那就配置为 1。系统默认退出数量为 120|
 |--output|将生成的地址输出到文件（追加）。一行一个，格式如：privatekey,address|
 |--post|将生成的地址，发送到（GET）指定的 url，每生成一条就会发送一次。数据格式为：privatekey=xx&address=yy。这个配置主要便于其它系统的集成|
-|--skip|跳过指定索引的 gpu 设备，如启动软件出现异常，请使用此参数跳过设备集成显卡|
+|--skip|跳过指定索引的 `GPU` 设备，如启动软件出现异常，请使用此参数跳过设备集成显卡|
 
 > 说明：对于 `--prefix-count` 和 `--suffix-count` 配置的值，大于该值的匹配也会一并输出。比如你配置 `--suffix-count 6`，那如果跑出来7位的号，也会一并输出出来。
 
@@ -192,7 +204,7 @@ TUqEg3dzVEJNQSVW2HY98z5X8SBdhmao8D
 
 ## 验证
 
-生成的私钥和地址务必进行匹配验证。验证地址：[https://secretscan.org/PrivateKeyTron](https://secretscan.org/PrivateKeyTron)
+生成的地址和私钥务必进行匹配验证。可尝试将私钥导入钱包，观察对应的地址是否和生成的地址一致。
 
 ## 安全
 
@@ -231,7 +243,7 @@ cl_ulong4 Dispatcher::Device::createSeed()
 
 ## 一点题外话
 
-现有市面上流传的 `gpu` 类地址生成程序，基本上都是基于 `profanity` 修改而来。从技术角度来讲，如果出于作恶的目的，完全可以对原版程序的漏洞 `变本加厉`，做到 `秒秒钟` 的私钥爆破。尤其是在不提供源码，仅有一个 `exe 可执行程序` 的情况下，会让作恶的逻辑更加的黑盒。因此再次建议请勿运行任何 `非透明` 的可执行程序，在币圈这种社会达尔文主义盛行的行业，由此导致的资产损失可以说每天都在上演。言尽于此，祝大家好运 🤝
+现有市面上流传的 `GPU` 类地址生成程序，基本上都是基于 `profanity` 修改而来。从技术角度来讲，如果出于作恶的目的，完全可以对原版程序的漏洞 `变本加厉`，做到 `秒秒钟` 的私钥爆破。尤其是在不提供源码，仅有一个 `exe 可执行程序` 的情况下，会让作恶的逻辑更加的黑盒。因此再次建议请勿运行任何 `非透明` 的可执行程序，在币圈这种社会达尔文主义盛行的行业，由此导致的资产损失可以说每天都在上演。言尽于此，祝大家好运 🤝
 
 ## 联系
 

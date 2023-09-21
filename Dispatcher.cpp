@@ -138,14 +138,6 @@ cl_kernel Dispatcher::Device::createKernel(cl_program &clProgram, const std::str
 // ref: https://medium.com/amber-group/exploiting-the-profanity-flaw-e986576de7ab
 cl_ulong4 Dispatcher::Device::createSeed()
 {
-#ifdef PROFANITY_DEBUG
-	cl_ulong4 r;
-	r.s[0] = 1;
-	r.s[1] = 1;
-	r.s[2] = 1;
-	r.s[3] = 1;
-	return r;
-#else
 	// Randomize private keys
 	std::random_device rd;
 	std::mt19937_64 eng1(rd());
@@ -160,7 +152,6 @@ cl_ulong4 Dispatcher::Device::createSeed()
 	r.s[2] = distr(eng3);
 	r.s[3] = distr(eng4);
 	return r;
-#endif
 }
 
 Dispatcher::Device::Device(
